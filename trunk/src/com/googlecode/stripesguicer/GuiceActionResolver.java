@@ -23,7 +23,7 @@ import net.sourceforge.stripes.controller.NameBasedActionResolver;
  * <p> This will allow guice to inject constructors as well as members in the ActionBean
  * like so: </p>
  * 
- * <p><pre>
+ * <p><code>
  *   public class MyActionBean implements ActionBean {
  *      
  *      &#064;Inject
@@ -31,10 +31,13 @@ import net.sourceforge.stripes.controller.NameBasedActionResolver;
  *        ...
  *      }
  *      
+ *      public Resolution list() {
+ *        ...
+ *      }
  *      
- *   
+ *      ...
  *   }
- * </pre></p>
+ * </code></p>
  * 
  * @see GuiceInjectorFactory
  * @author Sam Beran
@@ -42,7 +45,7 @@ import net.sourceforge.stripes.controller.NameBasedActionResolver;
 public final class GuiceActionResolver extends NameBasedActionResolver {
 
     protected ActionBean makeNewActionBean(Class<? extends ActionBean> type,
-            ActionBeanContext context) {
+            ActionBeanContext context) throws Exception {
         return GuiceInjectorFactory.makeGuicedActionBean(type, context);
     }
 }
